@@ -3,7 +3,7 @@ import type { Address } from 'viem';
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000' as Address;
 
 // Replace with the deployed SilentKingdoms address on Sepolia when available
-export const CONTRACT_ADDRESS = ZERO_ADDRESS;
+export const CONTRACT_ADDRESS = "0x0CF295B585f00eD4F9632924984f61d38A2a812F";
 
 export const CONTRACT_ABI = [
   {
