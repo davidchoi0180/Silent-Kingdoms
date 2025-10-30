@@ -40,6 +40,18 @@ function buildingNameFromId(id: number) {
   return 'Unknown';
 }
 
+function normaliseCiphertext(value: unknown) {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  if (typeof value === 'number' || typeof value === 'bigint') {
+    return value.toString();
+  }
+
+  return undefined;
+}
+
 export function GameApp() {
   const { address: walletAddress, isConnected } = useAccount();
   const signer = useEthersSigner();
@@ -120,8 +132,8 @@ export function GameApp() {
     [buildingPrices],
   );
 
-  const encryptedGold = playerState ? (playerState[0] as string) : undefined;
-  const encryptedBuilding = playerState ? (playerState[1] as string) : undefined;
+  const encryptedGold = normaliseCiphertext(playerState?.[0]);
+  const encryptedBuilding = normaliseCiphertext(playerState?.[1]);
 
   const setInfo = (message: string) => setFeedback({ type: 'info', message });
   const setError = (message: string) => setFeedback({ type: 'error', message });
